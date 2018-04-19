@@ -21,7 +21,7 @@ function renderCart() {
 function clearCart() {
   console.log(table.firstChild.nextSibling.nextSibling.nextSibling);
   var tbody = table.firstChild.nextSibling.nextSibling.nextSibling;
-  while(tbody.hasChildNodes()){
+  while (tbody.hasChildNodes()) {
     tbody.removeChild(tbody.firstChild);
   }
 }
@@ -54,22 +54,22 @@ function removeItemFromCart(event) {
 
   // TODO: When a delete link is clicked, rebuild the Cart array without that item
   var clickedCell = event.target;
-  if (clickedCell.parentNode.parentNode.tagName === 'THEAD'){
+  if (clickedCell.parentNode.parentNode.tagName === 'THEAD') {
     return;
   }
-  if (clickedCell.previousSibling !== null){
+  if (clickedCell.previousSibling !== null) {
     return;
   }
   console.log(clickedCell.parentNode.lastChild.textContent);
   var removedItem = clickedCell.parentNode.lastChild.textContent;
-  for (var i in Cart){
+  for (var i in Cart) {
     if (Cart[i].item.name === removedItem) {
 
-      Cart.splice(i,1);
+      Cart.splice(i, 1);
     }
   }
   // TODO: Save the cart back to local storage
-  localStorage.setItem('cart',JSON.stringify(Cart));
+  localStorage.setItem('cart', JSON.stringify(Cart));
   // TODO: Re-draw the cart table
   clearCart();
   showCart();

@@ -19,7 +19,7 @@ var Product = function(filePath, name) {
   this.filePath = filePath;
   this.name = name;
   this.add = [0];
-  Product.allProducts.push(this, name,);
+  Product.allProducts.push(this, name);
 };
 Product.allProducts = [];
 
@@ -47,12 +47,7 @@ function generateCatalog() {
   new Product('assets/water-can.jpg', 'Water Can');
   new Product('assets/wine-glass.jpg', 'Wine Glass');
 }
-var Product = allProducts[0];
 
 // Initialize the app by creating the big list of products with images and names
-
-
-var Product =  document.appendChild()
-
 
 generateCatalog();
