@@ -46,13 +46,22 @@ function addSelectedItemToCart() {
   // TODO: get the quantity
   var inputElement = document.getElementById('quantity');
   var inputValue = parseInt(inputElement.value);
+  if (isNaN(inputValue)){
+    return;
+  }
   // TODO: using those, create a new Cart item instance
+  for (i of Cart.allItems){
+    if (selectValue === i.item.name){
+      i.quantity += inputValue;
+      return;
+    }
+  }
   new Cart(selectedItem, inputValue);
 }
 
 // TODO: Save the contents of the cart to Local Storage
 function saveCartToLocalStorage() {
-  localStorage.setItem('cart',Cart.allItems);
+  localStorage.setItem('cart',JSON.stringify(Cart.allItems));
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
@@ -67,13 +76,18 @@ function updateCounter() {
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
+
   // TODO: Get the item and quantity from the form
-  var newCartItem = Cart.allItems[Cart.allItems.length-1];
   // TODO: Add a new element to the cartContents div with that information
   var cartContentDiv = document.getElementById('cartContents');
-  var newElement = document.createElement('p');
-  newElement.textContent = newCartItem.quantity + ' ' + newCartItem.item.name + '(s)';
-  cartContentDiv.appendChild(newElement);
+  while (cartContentDiv.hasChildNodes()){
+    cartContentDiv.removeChild(cartContentDiv.firstChild);
+  }
+  for (var i of Cart.allItems) {
+    var newElement = document.createElement('p');
+    newElement.textContent = i.quantity + ' ' + i.item.name + '(s)';
+    cartContentDiv.appendChild(newElement);
+  }
 }
 
 // Set up the "submit" event listener on the form.
