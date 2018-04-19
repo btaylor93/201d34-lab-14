@@ -52,7 +52,7 @@ var Product = allProducts[0];
 // Initialize the app by creating the big list of products with images and names
 
 
-
+var Product =  document.appendChild()
 
 
 generateCatalog();

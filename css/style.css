@@ -1,1 +1,24 @@
 /* TODO: Make it awesome */
+body{
+
+  background-color: coral;
+}
+h1{
+font-family: fantasy;
+font-size: 40px;
+text-align: left;
+}
+
+
+nav{
+height: 10px;
+text-align: center;
+}
+
+.copy{
+padding: 40px;
+width: 250px;
+text-align: center;
+
+}
+
