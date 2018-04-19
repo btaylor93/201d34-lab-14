@@ -1,1 +1,17 @@
 /* TODO: Make it awesome */
+
+body > header {
+  height: 100px;
+}
+
+body > header h1 {
+  text-align: center;
+  font-size: 200%;
+}
+
+.col-1{
+}
+
+table {
+  column-width: 200px;
+}
