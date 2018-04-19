@@ -19,7 +19,8 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-  var tbody = table.firstChild.nextSibling;
+  console.log(table.firstChild.nextSibling.nextSibling.nextSibling);
+  var tbody = table.firstChild.nextSibling.nextSibling.nextSibling;
   while(tbody.hasChildNodes()){
     tbody.removeChild(tbody.firstChild);
   }
@@ -29,7 +30,7 @@ function clearCart() {
 function showCart() {
 
   // TODO: Find the table body
-  var tbody = table.firstChild.nextSibling;
+  var tbody = table.firstChild.nextSibling.nextSibling.nextSibling;
   // TODO: Iterate over the items in the cart
   for (var i of Cart) {
     // TODO: Create a TR
@@ -52,13 +53,21 @@ function showCart() {
 function removeItemFromCart(event) {
 
   // TODO: When a delete link is clicked, rebuild the Cart array without that item
-  var removedItem = event.target.nextSibling.nextSibling.textContent;
+  var clickedCell = event.target;
+  if (clickedCell.parentNode.parentNode.tagName === 'THEAD'){
+    return;
+  }
+  if (clickedCell.previousSibling !== null){
+    return;
+  }
+  console.log(clickedCell.parentNode.lastChild.textContent);
+  var removedItem = clickedCell.parentNode.lastChild.textContent;
   for (var i in Cart){
     if (Cart[i].item.name === removedItem) {
+
       Cart.splice(i,1);
     }
   }
-
   // TODO: Save the cart back to local storage
   localStorage.setItem('cart',JSON.stringify(Cart));
   // TODO: Re-draw the cart table
