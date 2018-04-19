@@ -20,11 +20,11 @@ var Product = function(filePath, name) {
   this.filePath = filePath;
   this.name = name;
   this.add = [0];
-  Product.allProducts.push(this);
+  Product.allProducts.push(this, name,);
 };
 Product.allProducts = [];
 
-var totalNumberCounter = 0;
+
 
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
@@ -52,7 +52,8 @@ var Product = allProducts[0];
 
 // Initialize the app by creating the big list of products with images and names
 
-Product.allProducts = [];
+
+
 
 
 generateCatalog();
